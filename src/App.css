@@ -1,38 +1,177 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.expenseTracker {
+  width: 100%;
   min-height: 100vh;
+  color: #fff;
+  background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 3rem 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.expenseTracker .wrapper {
+  width: 100%;
+  max-width: 600px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.expenseTracker .wrapper > h1 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.expenseTracker .wrapper .balance {
+  margin: 1.5rem 0;
+}
+.expenseTracker .wrapper .balance h2 {
+  font-size: 1.3rem;
+}
+.expenseTracker .wrapper .balance span {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.expenseTracker .wrapper .incomeAndExpense {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  background-color: #3c3a3a;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  box-shadow: 0px 1px 5px -1px #ddd;
+}
+.expenseTracker .wrapper .incomeAndExpense::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 50%;
+  background-color: #ddd;
+}
+.expenseTracker .wrapper .incomeAndExpense div {
+  padding: 1.5rem 2rem;
+}
+.expenseTracker .wrapper .incomeAndExpense div h3 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.expenseTracker .wrapper .incomeAndExpense div span {
+  font-size: 1.4rem;
+}
+.expenseTracker .wrapper .incomeAndExpense div:first-of-type span {
+  color: rgb(144, 238, 144);
+}
+.expenseTracker .wrapper .incomeAndExpense div:last-of-type span {
+  color: rgb(238, 144, 144);
+}
+
+.expenseTracker .wrapper .history h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+.expenseTracker .wrapper .history .historyList .historyItem {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: #3c3a3a;
+  margin: 1rem 0;
+}
+.expenseTracker .wrapper .history .historyList .historyItem::before {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s ease-in-out;
+}
+.expenseTracker .wrapper .history .historyList .historyItem.green::before {
+  background-color: rgb(144, 238, 144);
+}
+.expenseTracker .wrapper .history .historyList .historyItem.red::before {
+  background-color: rgb(238, 144, 144);
+}
+.expenseTracker .wrapper .history .historyList .historyItem:hover::before {
+  /* width: 100%; */
+}
+.expenseTracker .wrapper .history .historyList .historyItem h4 {
+  flex: 1;
+  word-break: break-word;
+  margin-right: 0.75rem;
+}
+.expenseTracker .wrapper .history .historyList .historyItem .delete {
+  font-size: 1.2rem;
+  margin: 0 0.75rem;
+  cursor: pointer;
+}
+
+.expenseTracker .wrapper .addTransaction {
+  margin: 1.5rem 0;
+}
+.expenseTracker .wrapper .addTransaction h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+.expenseTracker .wrapper .addTransaction form > div {
+  margin: 0.75rem 0;
+}
+.expenseTracker .wrapper .addTransaction form > div label {
+  font-size: 1.2rem;
+}
+.expenseTracker .wrapper .addTransaction form > div input,
+.expenseTracker .wrapper .addTransaction form > div select {
+  display: block;
+  margin-top: 0.25rem;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  outline: 0;
+  border: 2px solid #fff;
+  opacity: 0.8;
+}
+.expenseTracker .wrapper .addTransaction form > div input[type="text"]:focus,
+.expenseTracker .wrapper .addTransaction form > div input[type="text"]:active {
+  opacity: 1;
+}
+.expenseTracker .wrapper .addTransaction form > div input[type="radio"] {
+  margin-right: 1rem;
+}
+.expenseTracker .wrapper .addTransaction form > div:last-of-type > div {
+  margin: 0.25rem 0;
+}
+.expenseTracker .wrapper .addTransaction form .addBtn {
+  all: unset;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background-color: #a714a7;
+  padding: 0.75rem 0;
+  margin: 1rem 0;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+.expenseTracker .wrapper .addTransaction form .addBtn:hover {
+  background-color: #bd12bd;
 }
